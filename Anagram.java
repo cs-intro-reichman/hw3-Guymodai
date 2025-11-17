@@ -56,7 +56,7 @@ public class Anagram {
 		for(int i = 0 ; i< str.length(); i++)
 		{
 			int value_of_char = (int)(str.charAt(i));
-			if ((value_of_char >= 48 && value_of_char <= 57) || (value_of_char >= 65 && value_of_char <= 90) || (value_of_char >= 97 && value_of_char <= 122) ) {
+		if ((value_of_char >= 48 && value_of_char <= 57) || (value_of_char >= 65 && value_of_char <= 90) || (value_of_char >= 97 && value_of_char <= 122) || value_of_char == 32) {
 			{
 				fix_str = fix_str + str.charAt(i);
 			}
