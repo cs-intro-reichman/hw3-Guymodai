@@ -1,4 +1,3 @@
-/** Functions for checking if a given string is an anagram. */
 public class Anagram {
 	public static void main(String args[]) {
 		// Tests the isAnagram function.
@@ -25,25 +24,60 @@ public class Anagram {
 		}
 		System.out.println(pass ? "test passed" : "test Failed");
 	}  
-
+	public static int count(String str, char c) {
+    	int counter = 0;
+			for (int i = 0; i < str.length(); i++) {
+				if (str.charAt(i) == c) {
+					counter++;
+				}
+			}
+			return counter;
+	}
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		// Replace the following statement with your code
-		return false;
-	}
+		str1 = preProcess(str1);
+		str2 = preProcess(str2);
+		if (str1.length() != str2.length()) {
+			return false;
+		}
+		for (int i = 0; i < str1.length(); i++) {
+			if (count(str1, str1.charAt(i)) != count(str2, str1.charAt(i))) {
+				return false;
+			}
+		}
+    return true;
+}
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
-		// Replace the following statement with your code
-		return "";
+		String fix_str = "";
+		for(int i = 0 ; i< str.length(); i++)
+		{
+			int value_of_char = (int)(str.charAt(i));
+		if ((value_of_char >= 48 && value_of_char <= 57) || (value_of_char >= 65 && value_of_char <= 90) || (value_of_char >= 97 && value_of_char <= 122) ) {
+			{
+				fix_str = fix_str + str.charAt(i);
+			}
+		}
+	}
+		return fix_str.toLowerCase();
 	} 
-	   
+	 
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
-		// Replace the following statement with your code
-		return "";
+		int randomNum = 0 ;
+		String Anagram = "";
+		while (str.length() !=0 )
+		{
+			randomNum = (int)(Math.random() * str.length());
+			Anagram = Anagram + str.charAt(randomNum);
+			String part1 = str.substring(0, randomNum);
+			String part2 = str.substring(randomNum + 1);
+			str = part1 + part2;
+		}
+		return Anagram;
 	}
 }
